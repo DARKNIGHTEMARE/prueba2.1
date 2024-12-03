@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Lateral Fijo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        /* Barra lateral fija */
+        .my-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px; /* Ancho fijo para la barra lateral */
+            height: 100vh; /* Ocupa toda la altura de la ventana */
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+            padding-left: 10px;
+        }
+
+        .my-sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+            display: block;
+            border-radius: 1000px;
+        }
+
+        .my-sidebar a:hover {
+            background-color: #007bff;
+        }
+
+        /* Espacio para el contenido principal */
+        .my-content {
+            margin-left: 250px; /* El contenido se ajusta al lado derecho de la barra lateral */
+            padding: 20px;
+        }
+
+        .my-navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .contenedor{ 
+          background-color: white; height: 900px; width:500px ;
+          border: 5px solid black; 
+          box-shadow:5px 5px 15px rgba(0, 0, 0, 0.3);
+          border-radius: 10px; }
+    </style>
+</head>
+<body class="my-body">
+
+<!-- Barra de navegación lateral -->
+<div class="my-sidebar">
+    <a class="my-navbar-brand" href="{{ url_for('bienvenido') }}">UNIVERSIDAD</a>
+    <a class="btn btn-danger" href="{{ url_for('index') }}">CERRAR SESION</a>
+    <ul class="nav flex-column">
+
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRegistro" aria-expanded="false" aria-controls="collapseRegistro">
+                Registro de datos
+            </a>
+            <div class="collapse" id="collapseRegistro">
+                <ul class="list-unstyled ps-3">
+                    <li><a class="nav-link" href="{{ url_for('formulario') }}">Registro alumno</a></li>
+                    <li><a class="nav-link" href="{{ url_for('formulario_profesor') }}">Registro profesor</a></li>
+                    <li><a class="nav-link" href="{{ url_for('formulario_asignatura') }}">Registro asignatura</a></li>
+                    <li><a class="nav-link" href="{{ url_for('formulario_curso') }}">Registro cursos</a></li>
+                    <li><a class="nav-link" href="{{ url_for('add_matricula') }}">Matricula</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReporte" aria-expanded="false" aria-controls="collapseReporte">
+                Reporte de datos
+            </a>
+            <div class="collapse" id="collapseReporte">
+                <ul class="list-unstyled ps-3">
+                    <li><a class="nav-link" href="{{ url_for('reporte') }}">Reporte alumno</a></li>
+                    <li><a class="nav-link" href="{{ url_for('reporte_profesor') }}">Reporte profesor</a></li>
+                    <li><a class="nav-link" href="{{ url_for('reporte_asignatura') }}">Reporte asignatura</a></li>
+                    <li><a class="nav-link" href="{{ url_for('reporte_curso') }}">Reporte cursos</a></li>
+                    <li><a class="nav-link" href="{{ url_for('reportematri') }}">Reporte Matricula</a></li>
+                    <li><a class="nav-link" href="{{ url_for('reporte_usuarios') }}">Reporte usuarios</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- Contenido principal -->
+
+
+
+<div class="my-content">
+
+  <center>
+  <div class="contenedor">
+      <div class="container">
+          <div class="row">
+                <form   action="/submit_form" method="POST">
+
+
+                  <H1>Registro de alumnos</H1>
+                  <br>
+                  <!-- NIF -->
+                  <label for="nif" class="form-label">NIF:</label>
+                  <input type="text" class="form-control" id="nif" placeholder="Ingrese su NIF" name="nif" required>
+                  <br>
+
+                  <!-- Nombre -->
+                  <label for="nombre" class="form-label">Nombre:</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" name="nombre" required>
+                  <br>
+
+                  <!-- Apellido -->
+                  <label for="apellido" class="form-label">Apellido:</label>
+                  <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" name="apellido" required>
+                  <br>
+
+                  <!-- Dirección Postal -->
+                  <label for="direccion_postal" class="form-label">Dirección Postal:</label>
+                  <input type="text" class="form-control" id="direccion_postal" placeholder="Ingrese su dirección postal" name="direccion_postal" required>
+                  <br>
+
+                  <!-- Teléfono -->
+                  <label for="telefono" class="form-label">Teléfono:</label>
+                  <input type="tel" class="form-control" id="telefono" placeholder="Ingrese su teléfono" name="telefono" required>
+                  <br>
+
+                  <!-- Dirección Electrónica (Email) -->
+                  <label for="direccion_electronica" class="form-label">Dirección Electrónica:</label>
+                  <input type="email" class="form-control" id="direccion_electronica" placeholder="Ingrese su email" name="direccion_electronica" required>
+                  <br>
+
+                  <!-- Beca -->
+                  <label for="beca" class="form-label">¿Tiene Beca?</label>
+                  <select class="form-control" id="beca" name="beca" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                  </select>
+                  <br>
+
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+                
+          
+          </div>
+          
+      </div>
+  </div>
+</div>
+</center>
+
+
+
+</body>
+</html>

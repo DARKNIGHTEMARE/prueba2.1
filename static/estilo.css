@@ -1,0 +1,25 @@
+.contenedor{ 
+    background-color: white; height: 900px; width:500px ;
+    border: 5px solid black; 
+    box-shadow:5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px; }
+
+
+    .contenedor2 {
+        background-color: white;
+        min-height: 100px;  /* Altura mínima inicial */
+        width: 1200px;
+        border: 5px solid black;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        overflow: hidden;  /* No permitirá que se muestre barra de desplazamiento interna */
+    }
+
+.contenedorp{ 
+    background-color: white; height: 750px; width:500px ;
+    border: 5px solid black; 
+    box-shadow:5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px; }
+
+
+
